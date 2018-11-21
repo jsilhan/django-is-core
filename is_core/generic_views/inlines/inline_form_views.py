@@ -9,6 +9,7 @@ from is_core.utils import get_readonly_field_data
 
 
 class InlineFormView(InlineView):
+
     form_class = SmartModelForm
     base_inline_formset_class = BaseInlineFormSet
 
@@ -33,7 +34,7 @@ class InlineFormView(InlineView):
     class_names = ['inline-js']
 
     def __init__(self, request, parent_view, parent_instance):
-        super(InlineFormView, self).__init__(request, parent_view, parent_instance)
+        super().__init__(request, parent_view, parent_instance)
         self.parent_model = parent_view.model
         self.core = parent_view.core
         self.parent_instance = parent_instance
@@ -240,12 +241,15 @@ class InlineFormView(InlineView):
 
 
 class TabularInlineFormView(InlineFormView):
+
     template_name = 'is_core/forms/tabular_inline_formset.html'
 
 
 class StackedInlineFormView(InlineFormView):
+
     template_name = 'is_core/forms/stacked_inline_formset.html'
 
 
 class ResponsiveInlineFormView(InlineFormView):
+
     template_name = 'is_core/forms/responsive_inline_formset.html'
